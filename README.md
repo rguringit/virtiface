@@ -46,7 +46,7 @@ modinfo ./virtiface.ko
 file ./virtiface.ko
 ```
 Expected result:
-
+```bash
 modinfo ./virtiface.ko
 filename:       /home/rgurin/virtiface/./virtiface.ko
 license:        GPL
@@ -61,7 +61,7 @@ vermagic:       6.11.0-29-generic SMP preempt mod_unload modversions
 file ./virtiface.ko
 ./virtiface.ko: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), BuildID[sha1]=3119e67b59788782d887498c2bdee73394603254, with debug_info, not stripped
 rgurin@rgurin-mclfxx:~/virtiface$
-
+```
 ## 4. Ping Test
 
 This is the shortest full-path validation of the driver.
@@ -118,13 +118,13 @@ ping -I virtiface0 192.0.2.10
 ```
 
 Expected result:
-
+```bash
 ping -I virtiface0 192.0.2.10
 PING 192.0.2.10 (192.0.2.10) from 192.168.31.150 virtiface0: 56(84) bytes of data.
 64 bytes from 192.0.2.10: icmp_seq=1 ttl=64 time=0.072 ms
 64 bytes from 192.0.2.10: icmp_seq=2 ttl=64 time=0.029 ms
 64 bytes from 192.0.2.10: icmp_seq=3 ttl=64 time=0.047 ms
-
+```
 
 7. Inspect counters and recent kernel messages:
 
@@ -133,7 +133,7 @@ ip -s link show virtiface0
 dmesg | tail -n 20
 ```
 Counters should increase after ping
-
+```bash
 ip -s link show virtiface0
 5: virtiface0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/none 
@@ -159,7 +159,7 @@ ip -s link show virtiface0
            504       6      0       0       0       0 
     TX:  bytes packets errors dropped carrier collsns           
            744      11      0       5       0       0 
-
+```
 ## 5. Functional Checks
 
 ### Read current IPv4 state
